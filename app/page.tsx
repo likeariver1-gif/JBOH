@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const profile = {
   name: "홍길동",
   initial: "홍",
@@ -115,52 +117,69 @@ export default function Home() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-5xl px-6 pb-24 sm:px-8">
-        <section className="flex min-h-[70vh] flex-col justify-center py-16 sm:py-24">
-          <div className="animate-fade-up mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-300 backdrop-blur-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-glow" />
-            프로젝트 진행 중
-          </div>
+        <section className="grid min-h-[80vh] items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
+          <div className="flex flex-col justify-center">
+            <div className="animate-fade-up mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-300 backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-glow" />
+              프로젝트 진행 중
+            </div>
 
-          <h1 className="animate-fade-up stagger-1 mb-6 max-w-3xl text-5xl font-bold leading-[1.1] tracking-tight sm:text-7xl">
-            안녕하세요,
-            <br />
-            <span className="gradient-text animate-shimmer">
-              {profile.name}
-            </span>
-            입니다
-          </h1>
-
-          <p className="animate-fade-up stagger-2 mb-4 max-w-xl text-xl font-medium text-zinc-300">
-            {profile.role} · {profile.tagline}
-          </p>
-
-          <p className="animate-fade-up stagger-3 mb-10 max-w-lg leading-relaxed text-zinc-400">
-            {profile.bio}
-          </p>
-
-          <div className="animate-fade-up stagger-4 flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:scale-105 hover:shadow-violet-500/40"
-            >
-              프로젝트 보기
-              <span className="transition-transform group-hover:translate-x-1">
-                →
+            <h1 className="animate-fade-up stagger-1 mb-6 text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+              안녕하세요,
+              <br />
+              <span className="gradient-text animate-shimmer">
+                {profile.name}
               </span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/10"
-            >
-              연락하기
-            </a>
+              입니다
+            </h1>
+
+            <p className="animate-fade-up stagger-2 mb-4 max-w-xl text-xl font-medium text-zinc-300">
+              {profile.role} · {profile.tagline}
+            </p>
+
+            <p className="animate-fade-up stagger-3 mb-10 max-w-lg leading-relaxed text-zinc-400">
+              {profile.bio}
+            </p>
+
+            <div className="animate-fade-up stagger-4 flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:scale-105 hover:shadow-violet-500/40"
+              >
+                프로젝트 보기
+                <span className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/10"
+              >
+                연락하기
+              </a>
+            </div>
           </div>
 
-          <div className="animate-fade-up stagger-5 mt-20 flex animate-float justify-center sm:justify-start">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 blur-xl opacity-50" />
-              <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-violet-600 to-indigo-700 text-4xl font-bold text-white shadow-2xl">
-                {profile.initial}
+          <div className="animate-fade-up stagger-5 relative mx-auto w-full max-w-lg lg:max-w-none">
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-violet-500/30 via-cyan-500/20 to-emerald-500/20 blur-2xl animate-pulse-glow" />
+            <div className="relative overflow-hidden rounded-3xl border border-white/15 shadow-2xl shadow-violet-500/20">
+              <Image
+                src="/positano.jpg"
+                alt="이탈리아 포지타노 해안의 colorful cliffside village"
+                width={800}
+                height={1000}
+                priority
+                className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/80 via-transparent to-transparent" />
+              <div className="absolute right-4 bottom-4 left-4 flex items-end justify-between">
+                <div>
+                  <p className="text-lg font-semibold text-white">Positano</p>
+                  <p className="text-sm text-zinc-300">Amalfi Coast, Italy</p>
+                </div>
+                <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  ✦ Inspiration
+                </span>
               </div>
             </div>
           </div>
@@ -168,6 +187,23 @@ export default function Home() {
 
         <section id="about" className="scroll-mt-24 py-16">
           <SectionTitle eyebrow="About" title="저를 소개합니다" />
+          <div className="glass-card mb-6 overflow-hidden rounded-2xl">
+            <div className="relative h-48 sm:h-64">
+              <Image
+                src="/positano.jpg"
+                alt="포지타노 전경"
+                fill
+                className="object-cover object-[center_30%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/90 via-[#030712]/40 to-transparent" />
+              <div className="absolute inset-0 flex items-center px-8">
+                <p className="max-w-md text-lg leading-relaxed text-zinc-200">
+                  아름다운 것에서 영감을 받습니다. 포지타노처럼 단순하지만
+                  강렬한 경험을 코드로 만들어 가고 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {highlights.map((item) => (
               <div
