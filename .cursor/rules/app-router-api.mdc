@@ -1,0 +1,57 @@
+---
+description: API는 App Router Route Handler로만 작성
+alwaysApply: true
+---
+
+# App Router API 규칙
+
+이 프로젝트의 **모든 API**는 App Router 안의 Route Handler로 작성한다.
+
+## 위치
+
+- `app/` 디렉터리 아래 `route.ts` 파일 사용
+- 일반적인 경로: `app/api/{리소스}/route.ts` → `/api/{리소스}`
+
+## 금지
+
+- Pages Router API Routes (`pages/api/**`) 생성·추가 금지
+- 별도 Express/Fastify 등 외부 서버를 API 대체용으로 새로 두지 않음
+
+## 예시
+
+```typescript
+// ❌ BAD — pages/api/users.ts (Pages Router)
+export default function handler(req, res) {
+  res.status(200).json({ users: [] });
+}
+
+// ✅ GOOD — app/api/users/route.ts (App Router)
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  return NextResponse.json({ users: [] });
+}
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  return NextResponse.json({ created: body }, { status: 201 });
+}
+```
+
+## 디렉터리 예시
+
+```
+app/
+  api/
+    users/
+      route.ts          # GET/POST /api/users
+    users/
+      [id]/
+        route.ts        # GET/PATCH/DELETE /api/users/:id
+```
+
+## 작성 시
+
+- HTTP 메서드별로 named export (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`)
+- 응답은 `NextResponse` 사용
+- 동적 세그먼트는 `[param]` 폴더로 표현

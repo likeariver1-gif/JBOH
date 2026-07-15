@@ -1,0 +1,45 @@
+---
+description: 프로젝트 변수명은 반드시 camelCase 사용
+alwaysApply: true
+---
+
+# 변수명 camelCase 규칙
+
+이 프로젝트의 **모든 변수명**은 camelCase를 사용한다.
+
+## 적용 대상
+
+- `const`, `let`, `var`로 선언하는 변수
+- 함수 매개변수
+- 객체 프로퍼티 키 (새로 작성하는 코드 기준)
+- React state, hook 반환값, destructuring 변수
+
+## 예시
+
+```typescript
+// ❌ BAD
+const user_name = "kim";
+const UserCount = 0;
+let is_active = true;
+
+function getUserInfo(user_id: string) {}
+
+// ✅ GOOD
+const userName = "kim";
+const userCount = 0;
+let isActive = true;
+
+function getUserInfo(userId: string) {}
+```
+
+## 예외
+
+- React 컴포넌트명: PascalCase (`UserProfile`)
+- 타입/인터페이스명: PascalCase (`UserProfileProps`)
+- 상수(변하지 않는 설정값): 프로젝트 관례에 따라 `SCREAMING_SNAKE_CASE` 허용 가능
+- 외부 API·라이브러리가 요구하는 필드명은 그대로 유지
+
+## 코드 작성 시
+
+- 새 코드 작성 시 camelCase를 기본으로 한다.
+- 기존 코드를 수정할 때 해당 스코프의 변수명도 camelCase로 맞춘다.
